@@ -1,0 +1,41 @@
+/* This problem is about to find the number of subsequeces which has the expected sum */
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int subadd(int index, vector<int> arr, vector<int> conarr,int expected, int adding){
+    int static counting=0;
+    if(index>=conarr.size()){
+         /*   int sum=0;
+        for(int i:arr){
+            sum+=i;
+        }
+        if(sum==expected) {
+            counting++;
+        for(int j: arr){
+            cout<<j<<" ";
+        }
+        cout<<"\n";
+        }*/
+        if(adding==expected) counting++;
+    return counting;
+    }
+    arr.push_back(conarr[index]);
+    adding+=conarr[index];
+    subadd(index+1,arr,conarr,expected,adding);
+    arr.pop_back();
+    adding-=conarr[index];
+    subadd(index+1,arr,conarr,expected,adding);
+
+    return counting;
+}
+
+
+int main(){
+    int index=0,expected=12;
+    vector<int> arr;
+    vector<int> conarr={12,7,5,1,4};
+    int output = subadd(index,arr,conarr,expected,0);
+    cout<<"The sum of number of sub integers present in the array are : "<<output;
+}
