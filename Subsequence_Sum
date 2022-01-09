@@ -1,4 +1,6 @@
-/* This problem is about to find the number of subsequeces which has the expected sum */
+/* This problem is about to find the number of subsequeces which has the expected sum 
+   Time complexity - 2^n
+*/
 
 #include<bits/stdc++.h>
 using namespace std;
