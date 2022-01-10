@@ -1,0 +1,38 @@
+/* Combination sum */
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void subcoming(int index, int target, vector<int> arr, vector<int> conarr){
+
+if(index==conarr.size()){
+    if(target==0) {
+
+    for(int i:arr){
+        cout<<i<<" ";
+    }
+    cout<<"\n";
+
+    }
+    return;
+}
+
+if(conarr[index]<=target){
+arr.push_back(conarr[index]);
+subcoming(index,target-conarr[index],arr,conarr);
+arr.pop_back();
+}
+subcoming(index+1,target,arr,conarr);
+
+
+
+}
+
+int main(){
+
+    int adding=0,index=0,target=7;
+    vector<int> conarr={2,3,6,7};
+    vector<int> arr;
+    subcoming(index,target,arr,conarr);
+return 0;
+}
