@@ -1,0 +1,41 @@
+/* Getting the count of the total number of power n in the given x */
+/* For clear question refer hacker rank - power sum question */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void calculatepower(int n, int x, int ran, int &counting,int adding,int starting){
+
+if(adding>x){
+    return;
+}
+if(starting==ran){
+        if(adding==x){
+             counting++;
+         }
+        return;
+}
+        if(adding==x){
+             counting++;
+             return;
+         }
+     adding+=pow(starting,n);
+     calculatepower(n, x, ran, counting, adding,starting+1);
+     adding-=pow(starting,n);
+     calculatepower(n, x, ran, counting, adding,starting+1);
+ }
+   int main() {
+    double N=2;
+    double X=800;
+    double r=(1/N);
+    int ran=(pow(X,r))+1;
+    int counting=0;
+    int adding=0;
+    calculatepower(N,X,ran,counting,adding,1);
+    cout<<"count "<<counting;
+return 0;
+    }
+
+
+
