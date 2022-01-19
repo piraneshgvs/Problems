@@ -1,0 +1,56 @@
+
+/*
+input_array=[1,2,3]
+
+o/p=
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
+
+*/
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+void permutations_num(vector<int> &input_array,vector<bool> &check_array,vector<vector<int>> &answer_array,vector<int> &rough_array){
+ if(rough_array.size()==input_array.size()){
+    answer_array.push_back(rough_array);
+
+    return;
+ }
+ for(int i=0;i<input_array.size();i++){
+    if(!check_array[i]){
+        check_array[i]=1;
+        rough_array.push_back(input_array[i]);
+        permutations_num(input_array,check_array,answer_array,rough_array);
+        check_array[i]=0;
+        rough_array.pop_back();
+
+    }
+ }
+
+ }
+
+
+int main(){
+vector<int> input_array={1,2,3};
+vector<bool> check_array={0};
+vector<vector<int>> answer_array;
+vector<int> rough_array;
+permutations_num(input_array,check_array,answer_array,rough_array);
+for(vector<int> i:answer_array){
+    for(int j:i){
+        cout<<j<<" ";
+    }
+    cout<<"\n";
+}
+
+
+return 0;
+}
