@@ -1,0 +1,30 @@
+/* This is one the efficent solution of optimized space complexity of permutation */
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+void permutate_efficient(vector<int> input_array,int index){
+if(index==input_array.size()){
+    for(int i:input_array){
+        cout<<i<<" ";
+    }
+    cout<<"\n";
+}
+for(int i=index;i<input_array.size();i++){
+    swap(input_array[i],input_array[index]);
+    permutate_efficient(input_array,index+1);
+    swap(input_array[index],input_array[i]);
+}
+
+}
+
+int main(){
+int index=0;
+vector<int> input_array={1,2,3};
+permutate_efficient(input_array,index);
+
+return 0;
+}
