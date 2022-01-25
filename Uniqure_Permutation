@@ -1,0 +1,34 @@
+/* code for unique permutation */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+void permutate_efficient(vector<int> &input_array,set<vector<int>> &answer_array,int index){
+if(index==input_array.size()){
+   answer_array.insert(input_array);
+   return;
+}
+for(int i=index;i<input_array.size();i++){
+    swap(input_array[i],input_array[index]);
+    permutate_efficient(input_array,answer_array,index+1);
+    swap(input_array[index],input_array[i]);
+}
+
+}
+
+int main(){
+int index=0;
+set<vector<int>> answer_array;
+vector<int> input_array={1,1,2};
+permutate_efficient(input_array,answer_array,index);
+vector<vector<int>> fi;
+for(vector<int> i: answer_array){
+  fi.push_back(i);
+}
+return 0;
+}
+
+
+
