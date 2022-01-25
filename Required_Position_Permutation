@@ -1,0 +1,59 @@
+
+
+
+
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+using namespace std;
+   void permutations_num(vector<int> &input_array,vector<bool> &check_array,vector<vector<int>> &answer_array,vector<int> &rough_array,int k,int c){
+ if(rough_array.size()==input_array.size()){
+     c++;
+    answer_array.push_back(rough_array);
+
+    return;
+ }
+        if(c<k){
+ for(int i=0;i<input_array.size();i++){
+    if(!check_array[i]){
+        check_array[i]=1;
+        rough_array.push_back(input_array[i]);
+        permutations_num(input_array,check_array,answer_array,rough_array,k,c);
+        check_array[i]=0;
+        rough_array.pop_back();
+
+    }
+ }
+        }
+
+ }
+int main()
+{
+   int n=4,k=9;
+        vector<int> input_array;
+        for(int i=1;i<=n;i++){
+            input_array.push_back(i);
+        }
+       vector<bool> check_array={0};
+       vector<vector<int>> answer_array;
+        vector<int> rough_array;
+        int c=0;
+        permutations_num(input_array,check_array,answer_array,rough_array,k,c);
+        vector<int> ans = answer_array[k-1];
+        stringstream ss;
+        string fi="";
+        for(int m:ans){
+           // cout<<m<<" ";
+            ss<<m;
+
+        }
+         ss>>fi;
+        cout<<fi;
+
+
+    return 0;
+}
