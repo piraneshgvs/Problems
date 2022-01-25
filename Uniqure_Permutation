@@ -1,4 +1,14 @@
-/* code for unique permutation */
+/* code for unique permutation
+
+Input: nums = [1,1,2]
+Output:
+[[1,1,2],
+ [1,2,1],
+ [2,1,1]]
+
+
+
+*/
 
 
 #include<bits/stdc++.h>
