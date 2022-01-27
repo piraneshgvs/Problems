@@ -1,0 +1,85 @@
+
+
+
+/* input:
+
+n=4
+..Q.
+Q...
+...Q
+.Q..
+
+
+.Q..
+...Q
+Q...
+..Q.
+
+*/
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool isGood(vector<string> board,int row,int col){
+    int temp=row;
+    int temp2=col;
+    while(col>=0){
+        if(board[row][col]=='Q') return false;
+        col--;
+    }
+
+    row=temp;
+    col=temp2;
+    while(row>=0&&col>=0){
+        if(board[row][col]=='Q') return false;
+        row--;
+        col--;
+    }
+
+    row=temp;
+    col=temp2;
+    while(row<board.size()&&col>=0){
+        if(board[row][col]=='Q') return false;
+        row++;
+        col--;
+    }
+    return true;
+}
+
+
+void NQueens(int col,vector<string> &board,vector<vector<string>> &final_array){
+
+if(col==board.size()){
+    final_array.push_back(board);
+}
+for(int row=0;row<board.size();row++){
+if(isGood(board,row,col)){
+    board[row][col]='Q';
+    NQueens(col+1,board,final_array);
+    board[row][col]='.';
+  //  NQueens(col+1,board,final_array);
+}
+}
+}
+
+int main(){
+int board_size=4,col=0;
+vector<vector<string>> final_array;
+vector<string> board(board_size);
+string doting(board_size,'.');
+for(int i=0;i<board_size;i++){
+    board[i]=doting;
+}
+NQueens(col,board,final_array);
+for(vector<string>i: final_array){
+    for(string j:i){
+        cout<<j<<"\n";
+    }
+    cout<<"\n";
+    cout<<"\n";
+}
+return 0;
+}
